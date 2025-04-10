@@ -14,7 +14,7 @@ export default function LoginPage() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/user/login", { email, password });
+      const res = await axios.post("https://backend-of-smart-delivery-management.onrender.com/api/user/login", { email, password });
       const { token } = res.data;
       localStorage.setItem("token", token);
       router.push("/dashboard");

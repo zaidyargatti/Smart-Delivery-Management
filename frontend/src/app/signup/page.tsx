@@ -18,7 +18,7 @@ export default function SignupPage() {
     try {
       setLoading(true);
 
-      const response = await axios.post("http://localhost:5000/api/user/signup", {
+      const response = await axios.post("https://backend-of-smart-delivery-management.onrender.com/api/user/signup", {
         username: name,
         email,
         password,
