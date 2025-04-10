@@ -19,7 +19,7 @@ export default function SignupPage() {
       setLoading(true);
 
       const response = await axios.post("http://localhost:5000/api/user/signup", {
-        username :name,
+        username: name,
         email,
         password,
       });
@@ -28,9 +28,17 @@ export default function SignupPage() {
 
       // After successful signup ➔ Redirect to login
       router.push("/login");
-    } catch (error: any) {
-      console.error("Signup failed:", error.response?.data || error.message);
-      alert(error.response?.data?.message || "Signup failed");
+    } catch (e: unknown) {
+      console.error("Signup failed:", e);
+
+      if (axios.isAxiosError(e)) {
+        console.error("Axios error:", e.response?.data || e.message);
+        alert(e.response?.data?.message || "Signup failed");
+      } else if (e instanceof Error) {
+        alert(e.message);
+      } else {
+        alert("An unknown error occurred");
+      }
     } finally {
       setLoading(false);
     }
