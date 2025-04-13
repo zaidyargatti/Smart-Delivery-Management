@@ -1,3 +1,6 @@
+// src/app/page.tsx
+import { redirect } from 'next/navigation';
+
 export default function Home() {
-  return <h1>Hello from the Home Page!</h1>;
+  redirect('/login');
 }
